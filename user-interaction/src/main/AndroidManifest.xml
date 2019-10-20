@@ -3,7 +3,9 @@
     package="com.bravedroid.userinteraction">
 
     <application>
-        <activity android:name=".MenuActivity">
+        <activity
+            android:name=".MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
