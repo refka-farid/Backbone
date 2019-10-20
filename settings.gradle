@@ -1,0 +1,2 @@
+include ':app', ':user-interaction'
+rootProject.name='Demo'
