@@ -14,7 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class MenuActivity extends AppCompatActivity {
-    private TextView mContextualMenuTextView;
+    private TextView mFirstContextualMenuTextView;
+    private TextView mSecondContextualMenuTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +24,17 @@ public class MenuActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //Contextual Menu
-        mContextualMenuTextView = findViewById(R.id.context_menu_text_1);
-        registerForContextMenu(mContextualMenuTextView);
+        mFirstContextualMenuTextView = findViewById(R.id.context_menu_text_1);
+        mSecondContextualMenuTextView = findViewById(R.id.context_menu_text_2);
+        registerForContextMenu(mFirstContextualMenuTextView);
+        registerForContextMenu(mSecondContextualMenuTextView);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterForContextMenu(mContextualMenuTextView);
+        unregisterForContextMenu(mFirstContextualMenuTextView);
+        unregisterForContextMenu(mSecondContextualMenuTextView);
     }
 
     // region OptionsMenu callbacks
@@ -62,17 +66,27 @@ public class MenuActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.context_menu_main, menu);
+        if (v.getId() == R.id.context_menu_text_1) {
+            inflater.inflate(R.menu.contextual_menu_main_first, menu);
+        } else if (v.getId() == R.id.context_menu_text_2) {
+            inflater.inflate(R.menu.contextual_menu_main_second, menu);
+        }
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         int itemId = item.getItemId();
-        if (itemId == R.id.contextual_edit) {
-            displayToast("contextual edit", this);
+        if (itemId == R.id.contextual_remove) {
+            displayToast("contextual remove", this);
+            return true;
+        } else if (itemId == R.id.contextual_update) {
+            displayToast("contextual update", this);
             return true;
         } else if (itemId == R.id.contextual_share) {
             displayToast("contextual share", this);
+            return true;
+        } else if (itemId == R.id.contextual_edit) {
+            displayToast("contextual edit", this);
             return true;
         }
         return super.onContextItemSelected(item);
@@ -81,7 +95,7 @@ public class MenuActivity extends AppCompatActivity {
 
     //region utilities
     static void displayToast(String message, Context context) {
-        Toast.makeText(context, "action contact", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
     //endregion utilities
 }
