@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,13 +10,33 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:id="@+id/context_menu_text_1"
+            android:layout_width="204dp"
             android:layout_height="wrap_content"
-            android:text="hello from user-interaction"
+            android:paddingStart="16dp"
+            android:text="long click here to see context menu 1"
+            android:textAlignment="viewStart"
+            android:textColor="#9C27B0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/context_menu_text_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/context_menu_text_2"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:text="long click here to see context menu 2"
+            android:textAlignment="viewStart"
+            android:textColor="#FF5722"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/context_menu_text_1"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
