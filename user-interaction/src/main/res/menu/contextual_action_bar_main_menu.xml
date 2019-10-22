@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/contextual_action_edit"
+        android:orderInCategory="10"
+        android:icon="@drawable/ic_action_edit_name"
+        android:title="Edit" />
+    <item
+        android:id="@+id/contextual_action_share"
+        android:orderInCategory="10"
+        android:icon="@drawable/ic_action_share_name"
+        android:title="share" />
+    <item
+        android:id="@+id/contextual_action_close"
+        android:orderInCategory="10"
+        android:icon="@drawable/ic_action_close_name"
+        android:title="close" />
+    <item
+        android:id="@+id/contextual_action_back"
+        android:orderInCategory="10"
+        android:icon="@drawable/ic_action_back_name"
+        android:title="back" />
+</menu>

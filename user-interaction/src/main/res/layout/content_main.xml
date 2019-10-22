@@ -13,7 +13,7 @@
             android:id="@+id/context_menu_text_1"
             android:layout_width="204dp"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
+            android:padding="8dp"
             android:text="long click here to see context menu 1"
             android:textAlignment="viewStart"
             android:textColor="#9C27B0"
@@ -28,7 +28,7 @@
             android:id="@+id/context_menu_text_2"
             android:layout_width="204dp"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
+            android:padding="8dp"
             android:text="long click here to see context menu 2"
             android:textAlignment="viewStart"
             android:textColor="#FF5722"
@@ -38,5 +38,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/context_menu_text_1"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/contextual_action_menu_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:text="long click here to show contextual action menu "
+            android:textColor="#4CAF50"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/context_menu_text_1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

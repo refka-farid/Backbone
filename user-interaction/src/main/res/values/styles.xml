@@ -8,7 +8,14 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppThemeX" parent="Theme.MaterialComponents.Light.NoActionBar" />
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ParentMaterialThemeNoActionBar" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
 </resources>
