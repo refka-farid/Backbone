@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -10,47 +11,87 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/context_menu_text_1"
-            android:layout_width="204dp"
+            android:id="@+id/textView_main_contextualMenu_one"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:layout_margin="8dp"
+            android:padding="2dp"
             android:text="long click here to see context menu 1"
-            android:textAlignment="viewStart"
             android:textColor="#9C27B0"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/context_menu_text_2"
+            app:layout_constraintEnd_toStartOf="@+id/textView_main_contextualMenu_two"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/context_menu_text_2"
-            android:layout_width="204dp"
+            android:id="@+id/textView_main_contextualMenu_two"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:layout_margin="8dp"
+            android:padding="2dp"
             android:text="long click here to see context menu 2"
-            android:textAlignment="viewStart"
             android:textColor="#FF5722"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView_main_contextualMenu_one"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/context_menu_text_1"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/textView_main_contextualMenu_one" />
 
         <TextView
-            android:id="@+id/contextual_action_menu_text"
-            android:layout_width="wrap_content"
+            android:id="@+id/textView_main_contextualActionMenu"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:padding="8dp"
+            android:layout_margin="8dp"
+            android:padding="2dp"
             android:text="long click here to show contextual action menu "
             android:textColor="#4CAF50"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView_main_popup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_main_contextualMenu_one" />
+
+        <TextView
+            android:id="@+id/textView_main_popup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="2dp"
+            android:text="click here to the button to show popup menu "
+            android:textColor="#E91E63"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView_main_random"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton_main_Popup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_main_contextualActionMenu" />
+
+        <ImageButton
+            android:id="@+id/imageButton_main_Popup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_button_popup"
+            app:layout_constraintBottom_toTopOf="@+id/textView_main_random"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_main_popup"
+            app:layout_constraintTop_toBottomOf="@+id/textView_main_contextualActionMenu" />
+
+        <TextView
+            android:id="@+id/textView_main_random"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="click here to move to next option item"
+            android:textColor="#07BEAF"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/context_menu_text_1" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_main_popup" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
