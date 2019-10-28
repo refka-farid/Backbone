@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.PopupMenu;
 
-import java.util.Random;
+import org.jetbrains.annotations.NotNull;
 
 public class MenuActivity extends AppCompatActivity {
     private TextView mFirstContextualMenuTextView;
@@ -25,8 +25,27 @@ public class MenuActivity extends AppCompatActivity {
 
     private ActionMode mActionMode;
 
-    private int[] iconArray = {R.drawable.ic_shop, R.drawable.ic_shop_two, R.drawable.ic_shopping_basket, R.drawable.ic_order_name};
-    private int oldIndex = -1;
+    private int[] mIconsArray;
+    private Randomizer mRandomizer;
+
+    private int mCurrentOptionsMenuIconIndex;
+
+    // region providers
+    protected int[] provideIconsArray() {
+        return new int[]{
+                R.drawable.ic_order_name,
+                R.drawable.ic_shop,
+                R.drawable.ic_shop_two,
+                R.drawable.ic_shopping_basket
+        };
+    }
+
+    @NotNull
+    protected Randomizer.LoopWithDoWhileRandomizer provideRandomizer() {
+        return new Randomizer.LoopWithDoWhileRandomizer(0);
+    }
+
+    // endregions providers
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +56,10 @@ public class MenuActivity extends AppCompatActivity {
         mSecondContextualMenuTextView = findViewById(R.id.textView_main_contextualMenu_two);
         registerForContextMenu(mFirstContextualMenuTextView);
         registerForContextMenu(mSecondContextualMenuTextView);
+
+        mIconsArray = provideIconsArray();
+        mRandomizer = provideRandomizer();
+
         //contextual action menu
         TextView articleContextualView = findViewById(R.id.textView_main_contextualActionMenu);
         articleContextualView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -80,6 +103,7 @@ public class MenuActivity extends AppCompatActivity {
         mMoveToNextOptionItemText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mCurrentOptionsMenuIconIndex = mRandomizer.getRandomIndex(mIconsArray.length);
                 invalidateOptionsMenu();
             }
         });
@@ -151,41 +175,14 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.option_menu_main, menu);
+        MenuItem item = menu.findItem(R.id.action_order);
+        item.setIcon(mIconsArray[mCurrentOptionsMenuIconIndex]);
         return true;
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.action_order);
-        int index = getRandomIndex();
-        item.setIcon(iconArray[index]);
         return true;
-    }
-
-    private int getRandomIndex() {
-        Random random = new Random();
-        int newIndex = random.nextInt(iconArray.length);
-        while (true) {
-            if (newIndex != oldIndex) {
-                break;
-            }
-            newIndex = random.nextInt(iconArray.length);
-        }
-
-//        for (; oldIndex == newIndex; ) {
-//            newIndex = random.nextInt(iconArray.length);
-//        }
-//        for (; oldIndex != newIndex; newIndex = random.nextInt(iconArray.length))
-//
-//        while (oldIndex == newIndex) {
-//            newIndex = random.nextInt(iconArray.length);
-//        }
-//        do {
-//            newIndex = random.nextInt(iconArray.length);
-//        } while (oldIndex == newIndex);
-
-        oldIndex = newIndex;
-        return newIndex;
     }
 
     @Override
